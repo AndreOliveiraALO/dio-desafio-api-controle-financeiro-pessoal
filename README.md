@@ -23,6 +23,7 @@ classDiagram
     class Usuario {
         Long id
         String nome
+		String telefone
         String email
     }
 
@@ -49,7 +50,8 @@ erDiagram
 	USUARIO {
 		BIGINT id PK ""  
 		string nome  ""  
-		string email UK ""  
+		string email UK ""
+		string telefone ""
 		string senha  ""  
 	}
 	TRANSACAO {
