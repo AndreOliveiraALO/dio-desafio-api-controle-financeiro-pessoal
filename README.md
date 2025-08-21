@@ -6,6 +6,7 @@
 classDiagram
     class Transacao {
         Long id
+		String descricao
         BigDecimal valor
         LocalDate dataCriacao
         TipoTransacao tipo
@@ -56,6 +57,7 @@ erDiagram
 	}
 	TRANSACAO {
 		BIGINT id PK ""  
+		String descricao ""
 		DECIMAL valor  ""  
 		DATE data_criacao  ""  
 		string tipo  ""  
