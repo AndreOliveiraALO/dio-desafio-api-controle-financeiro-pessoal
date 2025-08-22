@@ -1,11 +1,19 @@
 package com.santander.dio.fincontrol.model;
 
+import java.util.List;
+
+import com.santander.dio.fincontrol.utils.TipoCategoria;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -24,5 +32,12 @@ public class Categoria {
     @NotBlank
     @Column(nullable = false)
     private String nome;
+
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    private TipoCategoria tipo;
+
+    @OneToMany(mappedBy = "categoria")
+    private List<Transacao> transacoes;
 }
 

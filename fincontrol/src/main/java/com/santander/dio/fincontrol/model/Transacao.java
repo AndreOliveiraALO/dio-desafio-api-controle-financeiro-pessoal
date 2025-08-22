@@ -3,8 +3,6 @@ package com.santander.dio.fincontrol.model;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-import com.santander.dio.fincontrol.utils.TipoTransacao;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -37,9 +35,6 @@ public abstract class Transacao {
     @NotNull
     private LocalDate dataCriacao;
     
-    @NotNull
-    private TipoTransacao tipo;
-
     @ManyToOne
     @JoinColumn(name = "usuario_id", nullable = false)
     private Usuario usuario;

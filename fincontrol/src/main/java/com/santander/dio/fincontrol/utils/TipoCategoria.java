@@ -1,6 +1,6 @@
 package com.santander.dio.fincontrol.utils;
 
-public enum TipoTransacao {
+public enum TipoCategoria {
     RECEITA,
     DESPESA
 }
