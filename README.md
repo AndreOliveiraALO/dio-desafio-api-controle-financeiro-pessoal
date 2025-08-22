@@ -8,8 +8,7 @@ classDiagram
         Long id
 		String descricao
         BigDecimal valor
-        LocalDate dataCriacao
-        TipoTransacao tipo
+        LocalDate dataCriacao        
     }
 
     class Despesa {
@@ -31,6 +30,7 @@ classDiagram
     class Categoria {
         Long id
         String nome
+		TipoCategoria tipo
     }
 
     Transacao <|-- Despesa
@@ -59,14 +59,14 @@ erDiagram
 		BIGINT id PK ""  
 		String descricao ""
 		DECIMAL valor  ""  
-		DATE data_criacao  ""  
-		string tipo  ""  
+		DATE data_criacao  ""  		
 		BIGINT usuario_id FK ""  
 		BIGINT categoria_id FK ""  
 	}
 	CATEGORIA {
 		BIGINT id PK ""  
-		string nome  ""  
+		string nome  ""
+		string tipo  ""   
 	}
 	DESPESA {
 		BIGINT id PK ""  
