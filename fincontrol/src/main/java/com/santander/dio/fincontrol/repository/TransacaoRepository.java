@@ -16,12 +16,12 @@ public interface TransacaoRepository extends JpaRepository<Transacao, Long>{
 
     List<Transacao> findByUsuario(Usuario usuario);
 
-    List<Transacao> findByUsuarioAndDataBetween(Usuario usuario, LocalDate inicio, LocalDate fim);
+    List<Transacao> findByUsuarioAndDataCriacaoBetween(Usuario usuario, LocalDate inicio, LocalDate fim);
 
-    @Query("SELECT SUM(t.valor) FROM transacao WHERE t.usuario = :usuario AND t.categoriia.tipo = 'RECEITA'")
+    @Query("SELECT COALESCE(SUM(t.valor), 0) FROM Transacao t WHERE t.usuario = :usuario AND t.categoria.tipo = 'RECEITA'")
     BigDecimal calcularTotalReceitas(Usuario usuario);
 
-    @Query("SELECT SUM(t.valor) FROM transacao WHERE t.usuario = :usuario AND t.categoria.tipo = 'DESPESA'")
+    @Query("SELECT COALESCE(SUM(t.valor), 0) FROM Transacao t WHERE t.usuario = :usuario AND t.categoria.tipo = 'DESPESA'")
     BigDecimal calcularTotalDespesas(Usuario usuario);
 
 }
