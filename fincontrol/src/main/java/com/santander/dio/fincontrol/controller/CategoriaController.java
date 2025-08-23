@@ -32,7 +32,7 @@ public class CategoriaController {
     } 
 
     @PostMapping
-    public ResponseEntity<CategoriaResponse> salvar(@RequestBody CategoriaRequest dto){
+    public ResponseEntity<CategoriaResponse> salvar(@RequestBody @Valid CategoriaRequest dto){
         Categoria categoria = Categoria.fromRequest(dto);
         Categoria salva = categoriaService.salvar(categoria);
         return ResponseEntity.status(HttpStatus.CREATED).body(CategoriaResponse.fromEntity(salva));
@@ -51,10 +51,8 @@ public class CategoriaController {
 
     @GetMapping("/{id}")
     public ResponseEntity<CategoriaResponse> buscarPorId(@PathVariable Long id) {
-        return categoriaService.buscarPorId(id)
-            .map(CategoriaResponse:: fromEntity)
-            .map(ResponseEntity::ok)
-            .orElse(ResponseEntity.notFound().build());
+        Categoria categoria = categoriaService.buscarPorId(id);
+        return ResponseEntity.ok(CategoriaResponse.fromEntity(categoria));             
     }
 
     @GetMapping("/tipo/{tipo}")
@@ -62,21 +60,15 @@ public class CategoriaController {
         List<CategoriaResponse> lista = categoriaService.buscarPorTipo(tipo).stream()
             .map(CategoriaResponse :: fromEntity)
             .toList();
-
-        return lista.isEmpty() 
-            ?ResponseEntity.noContent().build()
-            :ResponseEntity.ok(lista);            
+        return ResponseEntity.ok(lista);            
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<CategoriaResponse> atualizar(
             @PathVariable Long id, @RequestBody @Valid CategoriaRequest dto) {
         Categoria categoria = Categoria.fromRequest(dto);        
-        
-        return categoriaService.atualizar(id, categoria)
-            .map(CategoriaResponse::fromEntity)
-            .map(ResponseEntity::ok)
-            .orElse(ResponseEntity.notFound().build());         
+        Categoria atualizada = categoriaService.atualizar(id, categoria);
+        return ResponseEntity.ok(CategoriaResponse.fromEntity(atualizada));             
     }
 
     @DeleteMapping("/{id}")
