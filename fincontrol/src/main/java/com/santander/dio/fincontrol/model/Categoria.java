@@ -2,6 +2,7 @@ package com.santander.dio.fincontrol.model;
 
 import java.util.List;
 
+import com.santander.dio.fincontrol.dto.CategoriaRequest;
 import com.santander.dio.fincontrol.utils.TipoCategoria;
 
 import jakarta.persistence.Column;
@@ -39,5 +40,12 @@ public class Categoria {
 
     @OneToMany(mappedBy = "categoria")
     private List<Transacao> transacoes;
+
+    public static Categoria fromRequest(CategoriaRequest dto){
+        Categoria categoria = new Categoria();
+        categoria.setNome(dto.nome());
+        categoria.setTipo(dto.tipo());
+        return categoria;     
+    }
 }
 
