@@ -1,7 +1,7 @@
 package com.santander.dio.fincontrol.model;
 
 import java.util.List;
-
+import com.santander.dio.fincontrol.dto.UsuarioRequest;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -40,6 +40,15 @@ public class Usuario {
 
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval= true)
     private List<Transacao> transacoes;
+
+    public static Usuario fromRequest(UsuarioRequest dto){
+        Usuario usuario = new Usuario();
+        usuario.setNome(dto.nome());
+        usuario.setEmail(dto.email());
+        usuario.setTelefone(dto.telefone());
+        
+        return usuario;     
+    }
 
 }
 
