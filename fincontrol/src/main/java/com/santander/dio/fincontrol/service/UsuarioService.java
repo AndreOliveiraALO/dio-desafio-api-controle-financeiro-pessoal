@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.santander.dio.fincontrol.dto.UsuarioRequest;
-import com.santander.dio.fincontrol.dto.UsuarioResponse;
+import com.santander.dio.fincontrol.dto.request.UsuarioRequest;
+import com.santander.dio.fincontrol.dto.response.UsuarioResponse;
 import com.santander.dio.fincontrol.exception.RecursoNaoEncontradoException;
 import com.santander.dio.fincontrol.model.Usuario;
 import com.santander.dio.fincontrol.repository.UsuarioRepository;

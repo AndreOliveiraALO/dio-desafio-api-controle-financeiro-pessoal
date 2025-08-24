@@ -1,4 +1,4 @@
-package com.santander.dio.fincontrol.dto;
+package com.santander.dio.fincontrol.dto.request;
 
 import com.santander.dio.fincontrol.utils.TipoCategoria;
 

@@ -2,7 +2,7 @@ package com.santander.dio.fincontrol.model;
 
 import java.util.List;
 
-import com.santander.dio.fincontrol.dto.CategoriaRequest;
+import com.santander.dio.fincontrol.dto.request.CategoriaRequest;
 import com.santander.dio.fincontrol.utils.TipoCategoria;
 
 import jakarta.persistence.Column;

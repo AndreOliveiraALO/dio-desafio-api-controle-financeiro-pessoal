@@ -1,7 +1,9 @@
 package com.santander.dio.fincontrol.model;
 
 import java.util.List;
-import com.santander.dio.fincontrol.dto.UsuarioRequest;
+
+import com.santander.dio.fincontrol.dto.request.UsuarioRequest;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

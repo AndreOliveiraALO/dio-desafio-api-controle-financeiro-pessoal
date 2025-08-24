@@ -1,7 +1,6 @@
 package com.santander.dio.fincontrol.controller;
 
 import java.util.List;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -13,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.santander.dio.fincontrol.dto.CategoriaRequest;
-import com.santander.dio.fincontrol.dto.CategoriaResponse;
+import com.santander.dio.fincontrol.dto.request.CategoriaRequest;
+import com.santander.dio.fincontrol.dto.response.CategoriaResponse;
 import com.santander.dio.fincontrol.model.Categoria;
 import com.santander.dio.fincontrol.service.CategoriaService;
 import com.santander.dio.fincontrol.utils.TipoCategoria;

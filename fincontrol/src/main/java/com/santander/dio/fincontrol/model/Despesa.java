@@ -1,7 +1,9 @@
 package com.santander.dio.fincontrol.model;
 
 import java.time.LocalDate;
-import com.santander.dio.fincontrol.dto.DespesaRequest;
+
+import com.santander.dio.fincontrol.dto.request.DespesaRequest;
+
 import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

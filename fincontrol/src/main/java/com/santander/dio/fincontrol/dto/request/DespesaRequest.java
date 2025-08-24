@@ -1,4 +1,4 @@
-package com.santander.dio.fincontrol.dto;
+package com.santander.dio.fincontrol.dto.request;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;

@@ -1,4 +1,4 @@
-package com.santander.dio.fincontrol.dto;
+package com.santander.dio.fincontrol.dto.response;
 
 import com.santander.dio.fincontrol.model.Usuario;
 

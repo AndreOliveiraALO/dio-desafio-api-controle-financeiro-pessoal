@@ -6,8 +6,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.santander.dio.fincontrol.dto.UsuarioRequest;
-import com.santander.dio.fincontrol.dto.UsuarioResponse;
+import com.santander.dio.fincontrol.dto.request.UsuarioRequest;
+import com.santander.dio.fincontrol.dto.response.UsuarioResponse;
 import com.santander.dio.fincontrol.service.UsuarioService;
 
 import jakarta.validation.Valid;

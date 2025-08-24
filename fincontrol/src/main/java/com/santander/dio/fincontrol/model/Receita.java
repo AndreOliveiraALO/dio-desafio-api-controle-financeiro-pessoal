@@ -2,7 +2,7 @@ package com.santander.dio.fincontrol.model;
 
 import java.time.LocalDate;
 
-import com.santander.dio.fincontrol.dto.ReceitaRequest;
+import com.santander.dio.fincontrol.dto.request.ReceitaRequest;
 
 import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;

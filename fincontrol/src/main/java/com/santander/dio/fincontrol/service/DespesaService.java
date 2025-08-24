@@ -1,7 +1,7 @@
 package com.santander.dio.fincontrol.service;
 
-import com.santander.dio.fincontrol.dto.DespesaRequest;
-import com.santander.dio.fincontrol.dto.DespesaResponse;
+import com.santander.dio.fincontrol.dto.request.DespesaRequest;
+import com.santander.dio.fincontrol.dto.response.DespesaResponse;
 import com.santander.dio.fincontrol.model.Categoria;
 import com.santander.dio.fincontrol.model.Despesa;
 import com.santander.dio.fincontrol.model.Usuario;
