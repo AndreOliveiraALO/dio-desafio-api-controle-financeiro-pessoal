@@ -27,24 +27,20 @@ public class UsuarioService {
 
     public UsuarioResponse buscarPorId(Long id) {
         Usuario usuario = usuarioRepository.findById(id)
-                .orElseThrow(() -> new RecursoNaoEncontradoException("Usuário não encontrado com id " + id));
+                .orElseThrow(() -> new RecursoNaoEncontradoException(
+                    "Usuário não encontrado com id " + id));
         return UsuarioResponse.fromEntity(usuario);
     }
 
     public UsuarioResponse salvar(UsuarioRequest dto) {
-        /* Usuario usuario = new Usuario();
-        usuario.setNome(dto.nome());
-        usuario.setEmail(dto.email());
-        usuario.setTelefone(dto.telefone());*/
         Usuario usuario = Usuario.fromRequest(dto);
         return UsuarioResponse.fromEntity(usuarioRepository.save(usuario));
     }
 
     public UsuarioResponse atualizar(Long id, UsuarioRequest dto) {
-        /*usuarioRepository.findById(id)
-            .orElseThrow(() -> new RecursoNaoEncontradoException("Usuário não encontrado com id " + id));*/
         if (!usuarioRepository.existsById(id))
-            throw new RecursoNaoEncontradoException("Usuário não encontrado com id " + id);
+            throw new RecursoNaoEncontradoException(
+                "Usuário não encontrado com id " + id);
         
         Usuario usuario = Usuario.fromRequest(dto);
         usuario.setId(id);        
@@ -53,7 +49,8 @@ public class UsuarioService {
 
     public void deletar(Long id) {
         if (!usuarioRepository.existsById(id))
-            throw new RecursoNaoEncontradoException("Usuário não encontrado com id " + id);
+            throw new RecursoNaoEncontradoException(
+                "Usuário não encontrado com id " + id);
         usuarioRepository.deleteById(id);
     }
 }
