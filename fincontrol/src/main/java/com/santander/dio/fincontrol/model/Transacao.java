@@ -3,6 +3,7 @@ package com.santander.dio.fincontrol.model;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -18,6 +19,7 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
+@Schema(description = "Transação financeira genérica", subTypes = {Despesa.class, Receita.class}, hidden = true)
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 import com.santander.dio.fincontrol.dto.request.DespesaRequest;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,11 +12,11 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
+@Schema(description = "Despesa registrada", hidden = true)
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-
 public class Despesa extends Transacao {
     private LocalDate dataVencimento;
     private LocalDate dataPagamento;

@@ -2,8 +2,10 @@ package com.santander.dio.fincontrol.model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.santander.dio.fincontrol.dto.request.UsuarioRequest;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -19,6 +21,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
+@Schema(hidden = true)
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -35,12 +38,12 @@ public class Usuario {
     @Column(unique = true, nullable = false )
     private String email;
 
-    private String telefone;
-    
-    @NotBlank
+    private String telefone;    
+   
     private String senha;
 
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval= true)
+    @JsonIgnore
     private List<Transacao> transacoes;
 
     public static Usuario fromRequest(UsuarioRequest dto){

@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 import com.santander.dio.fincontrol.dto.request.ReceitaRequest;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,6 +12,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
+@Schema(description = "Receita registrada", hidden = true)
 @Getter
 @Setter
 @NoArgsConstructor
