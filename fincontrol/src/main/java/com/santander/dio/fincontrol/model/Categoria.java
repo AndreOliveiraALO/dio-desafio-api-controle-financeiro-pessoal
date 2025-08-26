@@ -2,9 +2,11 @@ package com.santander.dio.fincontrol.model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.santander.dio.fincontrol.dto.request.CategoriaRequest;
 import com.santander.dio.fincontrol.utils.TipoCategoria;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -21,6 +23,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
+@Schema(hidden = true)
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -39,6 +42,7 @@ public class Categoria {
     private TipoCategoria tipo;
 
     @OneToMany(mappedBy = "categoria")
+    @JsonIgnore
     private List<Transacao> transacoes;
 
     public static Categoria fromRequest(CategoriaRequest dto){

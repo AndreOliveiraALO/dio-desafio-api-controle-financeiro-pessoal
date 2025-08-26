@@ -1,6 +1,7 @@
 package com.santander.dio.fincontrol.controller;
 
 import java.util.List;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -14,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.santander.dio.fincontrol.dto.request.CategoriaRequest;
 import com.santander.dio.fincontrol.dto.response.CategoriaResponse;
-import com.santander.dio.fincontrol.model.Categoria;
 import com.santander.dio.fincontrol.service.CategoriaService;
 import com.santander.dio.fincontrol.utils.TipoCategoria;
 
@@ -31,17 +31,15 @@ public class CategoriaController {
     } 
 
     @PostMapping
-    public ResponseEntity<CategoriaResponse> salvar(@RequestBody @Valid CategoriaRequest dto){
-        Categoria categoria = Categoria.fromRequest(dto);
-        Categoria salva = categoriaService.salvar(categoria);
-        return ResponseEntity.status(HttpStatus.CREATED).body(CategoriaResponse.fromEntity(salva));
+    public ResponseEntity<CategoriaResponse> salvar(@RequestBody 
+            @Valid CategoriaRequest dto){
+        return ResponseEntity.status(HttpStatus.CREATED)
+            .body(categoriaService.salvar(dto));
     }
 
     @GetMapping
     public ResponseEntity<List<CategoriaResponse>> listar(){
-        List<CategoriaResponse> lista = categoriaService.listar().stream()
-            .map(CategoriaResponse::fromEntity)
-            .toList();
+        List<CategoriaResponse> lista = categoriaService.listar();
 
         return lista.isEmpty() 
             ? ResponseEntity.noContent().build()
@@ -50,24 +48,20 @@ public class CategoriaController {
 
     @GetMapping("/{id}")
     public ResponseEntity<CategoriaResponse> buscarPorId(@PathVariable Long id) {
-        Categoria categoria = categoriaService.buscarPorId(id);
-        return ResponseEntity.ok(CategoriaResponse.fromEntity(categoria));             
+        return ResponseEntity.ok(categoriaService.buscarPorId(id));             
     }
 
     @GetMapping("/tipo/{tipo}")
-    public ResponseEntity<List<CategoriaResponse>> buscarPorTipo(@PathVariable TipoCategoria tipo) {
-        List<CategoriaResponse> lista = categoriaService.buscarPorTipo(tipo).stream()
-            .map(CategoriaResponse :: fromEntity)
-            .toList();
+    public ResponseEntity<List<CategoriaResponse>> buscarPorTipo(
+            @PathVariable TipoCategoria tipo) {
+        List<CategoriaResponse> lista = categoriaService.buscarPorTipo(tipo);
         return ResponseEntity.ok(lista);            
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<CategoriaResponse> atualizar(
             @PathVariable Long id, @RequestBody @Valid CategoriaRequest dto) {
-        Categoria categoria = Categoria.fromRequest(dto);        
-        Categoria atualizada = categoriaService.atualizar(id, categoria);
-        return ResponseEntity.ok(CategoriaResponse.fromEntity(atualizada));             
+        return ResponseEntity.ok(categoriaService.atualizar(id, dto));             
     }
 
     @DeleteMapping("/{id}")
