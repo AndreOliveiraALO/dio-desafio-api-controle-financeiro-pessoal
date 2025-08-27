@@ -49,8 +49,8 @@ public class DespesaController {
 
     @PutMapping("/{id}")
     public ResponseEntity<DespesaResponse> atualizar(
-            @PathVariable Long id, @RequestBody DespesaRequest request) {
-        return ResponseEntity.ok(despesaService.atualizar(id, request));
+            @PathVariable Long id, @RequestBody DespesaRequest dto) {
+        return ResponseEntity.ok(despesaService.atualizar(id, dto));
     }
 
     @DeleteMapping("/{id}")

@@ -3,9 +3,9 @@ package com.santander.dio.fincontrol.service;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.santander.dio.fincontrol.dto.request.DespesaRequest;
-import com.santander.dio.fincontrol.dto.response.CategoriaResponse;
 import com.santander.dio.fincontrol.dto.response.DespesaResponse;
 import com.santander.dio.fincontrol.exception.RecursoNaoEncontradoException;
 import com.santander.dio.fincontrol.model.Categoria;
@@ -14,7 +14,6 @@ import com.santander.dio.fincontrol.model.Usuario;
 import com.santander.dio.fincontrol.repository.CategoriaRepository;
 import com.santander.dio.fincontrol.repository.TransacaoRepository;
 import com.santander.dio.fincontrol.repository.UsuarioRepository;
-import com.santander.dio.fincontrol.utils.TipoCategoria;
 
 @Service
 public class DespesaService {
@@ -29,6 +28,7 @@ public class DespesaService {
         this.categoriaRepository = categoriaRepository;
     }
 
+    @Transactional(readOnly = true)
     public List<DespesaResponse> listar() {
         return transacaoRepository.findAll().stream()
                 .filter(t -> t instanceof Despesa)
@@ -37,6 +37,7 @@ public class DespesaService {
                 .toList();
     }
 
+    @Transactional(readOnly = true)
     public DespesaResponse buscarPorId(Long id) {
         Despesa despesa = transacaoRepository.findById(id)
                 .filter(t -> t instanceof Despesa)
@@ -46,18 +47,7 @@ public class DespesaService {
         return DespesaResponse.fromEntity(despesa);
     }
 
-    public List<CategoriaResponse> buscarPor(TipoCategoria tipo){
-        List<Categoria> categorias = categoriaRepository.findByTipo(tipo);
-          
-        if (categorias.isEmpty())
-            throw new RecursoNaoEncontradoException(
-                "Nenhuma categoria encontrada do tipo "+tipo);
-        
-        return categorias.stream()
-            .map(CategoriaResponse::fromEntity)
-            .toList();            
-    }
-
+    @Transactional
     public DespesaResponse salvar(DespesaRequest dto) {
         Usuario usuario = usuarioRepository.findById(dto.usuarioId())
                 .orElseThrow(() -> new RecursoNaoEncontradoException(
@@ -73,6 +63,7 @@ public class DespesaService {
         return DespesaResponse.fromEntity(despesa);
     }
 
+    @Transactional
     public DespesaResponse atualizar(Long id, DespesaRequest dto) {
         if (!transacaoRepository.existsById(id))
             throw new RecursoNaoEncontradoException(
@@ -91,6 +82,7 @@ public class DespesaService {
         return DespesaResponse.fromEntity(transacaoRepository.save(despesa));
     }
 
+    @Transactional
     public void deletar(Long id) {
         if (!transacaoRepository.existsById(id))
             throw new RecursoNaoEncontradoException(
