@@ -32,6 +32,12 @@ public class UsuarioService {
         return UsuarioResponse.fromEntity(usuario);
     }
 
+    public Usuario buscarUsuarioPorId(Long id) {
+        return usuarioRepository.findById(id)
+                .orElseThrow(() -> new RecursoNaoEncontradoException(
+                    "Usuário não encontrado com id " + id));        
+    }
+
     public UsuarioResponse salvar(UsuarioRequest dto) {
         Usuario usuario = Usuario.fromRequest(dto);
         return UsuarioResponse.fromEntity(usuarioRepository.save(usuario));
