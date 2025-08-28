@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "descricao": "Salario Agosto-2025",
+    "valor": 3500,
+    "dataCriacao": "2025-08-27",
+    "categoriaNome": "Salario",
+    "tipoCategoria": "RECEITA"
+  },
+  {
+    "id": 2,
+    "descricao": "Vale Alimentação Agosto-2025",
+    "valor": 700,
+    "dataCriacao": "2025-08-27",
+    "categoriaNome": "Ticket Alimentação",
+    "tipoCategoria": "RECEITA"
+  }
+]

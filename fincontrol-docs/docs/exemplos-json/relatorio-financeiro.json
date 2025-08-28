@@ -1,0 +1,12 @@
+{
+  "usuarioId": 1,
+  "periodo": {
+    "inicio": "2025-01-01",
+    "fim": "2025-01-31"
+  },
+  "totais": {
+    "receitas": 5000.0,
+    "despesas": 250.75,
+    "saldo": 4749.25
+  }
+}
